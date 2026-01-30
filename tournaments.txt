@@ -1,30 +1,33 @@
-tennis_atp_aus_open_singles
-tennis_atp_canadian_open
-tennis_atp_china_open
-tennis_atp_cincinnati_open
-tennis_atp_dubai
-tennis_atp_french_open
-tennis_atp_indian_wells
-tennis_atp_italian_open
-tennis_atp_madrid_open
-tennis_atp_miami_open
-tennis_atp_monte_carlo_masters
-tennis_atp_paris_masters
-tennis_atp_qatar_open
-tennis_atp_shanghai_masters
-tennis_atp_us_open
-tennis_atp_wimbledon
-tennis_wta_aus_open_singles
-tennis_wta_canadian_open
-tennis_wta_china_open
-tennis_wta_cincinnati_open
-tennis_wta_dubai
-tennis_wta_french_open
-tennis_wta_indian_wells
-tennis_wta_italian_open
-tennis_wta_madrid_open
-tennis_wta_miami_open
-tennis_wta_qatar_open
-tennis_wta_us_open
-tennis_wta_wimbledon
-tennis_wta_wuhan_open
+ATP
+tennis_atp_aus_open_singles (Jan 12 - Feb 1)
+tennis_atp_dubai (Feb 15 - 28)
+tennis_atp_qatar_open (Feb 16 - 21)
+tennis_atp_indian_wells (Mar 1 - 15)
+tennis_atp_miami_open (Mar 15 - 29)
+tennis_atp_monte_carlo_masters (Apr 3 - 12)
+tennis_atp_madrid_open (Apr 20 - May 3)
+tennis_atp_italian_open (May 4 - 17)
+tennis_atp_french_open (May 17 - Jun 7)
+tennis_atp_wimbledon (Jun 21 - Jul 12)
+tennis_atp_canadian_open (Jul 31 - Aug 13)
+tennis_atp_cincinnati_open (Aug 11 - 24)
+tennis_atp_us_open (Aug 23 - Sep 13)
+tennis_atp_china_open (Sep 28 - Oct 6)
+tennis_atp_shanghai_masters (Oct 5 - 18)
+tennis_atp_paris_masters (Oct 31 - Nov 8)
+
+WTA
+tennis_wta_aus_open_singles (Jan 12 - Feb 1)
+tennis_wta_qatar_open (Feb 8 - 14)
+tennis_wta_dubai (Feb 15 - 28)
+tennis_wta_indian_wells (Mar 1 - 15)
+tennis_wta_miami_open (Mar 15 - 29)
+tennis_wta_madrid_open (Apr 20 - May 3)
+tennis_wta_italian_open (May 4 - 17)
+tennis_wta_french_open (May 17 - Jun 7)
+tennis_wta_wimbledon (Jun 21 - Jul 12)
+tennis_wta_canadian_open (Jul 31 - Aug 13)
+tennis_wta_cincinnati_open (Aug 11 - 24)
+tennis_wta_us_open (Aug 23 - Sep 13)
+tennis_wta_china_open (Sep 28 - Oct 6)
+tennis_wta_wuhan_open (Oct 10 - 18)

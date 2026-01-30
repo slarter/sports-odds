@@ -25,6 +25,7 @@ def create_db_tables(cur):
                 player_1 TEXT NOT NULL,
                 player_2 TEXT NOT NULL,
                 PRIMARY KEY (api_match_id, player_1, player_2)
+                UNIQUE(api_match_id)
             );
         """
         cur.execute(create_match_table_query)
@@ -40,7 +41,7 @@ def create_db_tables(cur):
                 player_2 TEXT,
                 player_2_moneyline FLOAT,
                 last_update_time TEXT,
-                FOREIGN KEY(api_match_id, player_1, player_2) REFERENCES Match(api_match_id, player_1, player_2)
+                FOREIGN KEY(api_match_id, player_1, player_2) REFERENCES Match(api_match_id, player_1, player_2) ON DELETE CASCADE
             );
         """
         cur.execute(create_odds_table_query)
