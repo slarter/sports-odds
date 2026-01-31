@@ -32,104 +32,102 @@ def main():
         'bookmakers': 'draftkings',
     }
 
-    # matches_json = get_api_response(api_base_url, general_params)
-    matches_json = [
-        {
-            "id": "1d4a419bd92c0388bb01a6835b9b13ad",
-            "sport_key": "tennis_wta_aus_open_singles",
-            "sport_title": "WTA Australian Open",
-            "commence_time": "2026-01-28T00:30:00Z",
-            "home_team": "Elena Rybakina",
-            "away_team": "Iga Swiatek",
-            "bookmakers": [
-                {
-                    "key": "draftkings",
-                    "title": "DraftKings",
-                    "last_update": "2026-01-28T01:32:31Z",
-                    "markets": [
-                        {
-                            "key": "h2h",
-                            "last_update": "2026-01-28T01:32:31Z",
-                            "outcomes": [
-                                {
-                                    "name": "Elena Rybakina",
-                                    "price": 1.67
-                                },
-                                {
-                                    "name": "Iga Swiatek",
-                                    "price": 2.3
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "28f70894092e11447f05729cea3da348",
-            "sport_key": "tennis_wta_aus_open_singles",
-            "sport_title": "WTA Australian Open",
-            "commence_time": "2026-01-28T02:10:00Z",
-            "home_team": "Jessica Pegula",
-            "away_team": "Amanda Anisimova",
-            "bookmakers": [
-                {
-                    "key": "draftkings",
-                    "title": "DraftKings",
-                    "last_update": "2026-01-28T01:32:31Z",
-                    "markets": [
-                        {
-                            "key": "h2h",
-                            "last_update": "2026-01-28T01:32:31Z",
-                            "outcomes": [
-                                {
-                                    "name": "Amanda Anisimova",
-                                    "price": 1.82
-                                },
-                                {
-                                    "name": "Jessica Pegula",
-                                    "price": 2.03
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "3d22d20c45bd321a748c441dee6d20ac",
-            "sport_key": "tennis_wta_aus_open_singles",
-            "sport_title": "WTA Australian Open",
-            "commence_time": "2026-01-29T00:00:21Z",
-            "home_team": "Aryna Sabalenka",
-            "away_team": "Elina Svitolina",
-            "bookmakers": [
-                {
-                    "key": "draftkings",
-                    "title": "DraftKings",
-                    "last_update": "2026-01-28T01:32:31Z",
-                    "markets": [
-                        {
-                            "key": "h2h",
-                            "last_update": "2026-01-28T01:32:31Z",
-                            "outcomes": [
-                                {
-                                    "name": "Aryna Sabalenka",
-                                    "price": 1.25
-                                },
-                                {
-                                    "name": "Elina Svitolina",
-                                    "price": 3.87
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-
-    now = datetime.now(tzutc())
+    matches_json = get_api_response(api_base_url, general_params)
+    # matches_json = [
+    #     {
+    #         "id": "1d4a419bd92c0388bb01a6835b9b13ad",
+    #         "sport_key": "tennis_wta_aus_open_singles",
+    #         "sport_title": "WTA Australian Open",
+    #         "commence_time": "2026-01-28T00:30:00Z",
+    #         "home_team": "Elena Rybakina",
+    #         "away_team": "Iga Swiatek",
+    #         "bookmakers": [
+    #             {
+    #                 "key": "draftkings",
+    #                 "title": "DraftKings",
+    #                 "last_update": "2026-01-28T01:32:31Z",
+    #                 "markets": [
+    #                     {
+    #                         "key": "h2h",
+    #                         "last_update": "2026-01-28T01:32:31Z",
+    #                         "outcomes": [
+    #                             {
+    #                                 "name": "Elena Rybakina",
+    #                                 "price": 1.67
+    #                             },
+    #                             {
+    #                                 "name": "Iga Swiatek",
+    #                                 "price": 2.3
+    #                             }
+    #                         ]
+    #                     }
+    #                 ]
+    #             }
+    #         ]
+    #     },
+    #     {
+    #         "id": "28f70894092e11447f05729cea3da348",
+    #         "sport_key": "tennis_wta_aus_open_singles",
+    #         "sport_title": "WTA Australian Open",
+    #         "commence_time": "2026-01-28T02:10:00Z",
+    #         "home_team": "Jessica Pegula",
+    #         "away_team": "Amanda Anisimova",
+    #         "bookmakers": [
+    #             {
+    #                 "key": "draftkings",
+    #                 "title": "DraftKings",
+    #                 "last_update": "2026-01-28T01:32:31Z",
+    #                 "markets": [
+    #                     {
+    #                         "key": "h2h",
+    #                         "last_update": "2026-01-28T01:32:31Z",
+    #                         "outcomes": [
+    #                             {
+    #                                 "name": "Amanda Anisimova",
+    #                                 "price": 1.82
+    #                             },
+    #                             {
+    #                                 "name": "Jessica Pegula",
+    #                                 "price": 2.03
+    #                             }
+    #                         ]
+    #                     }
+    #                 ]
+    #             }
+    #         ]
+    #     },
+    #     {
+    #         "id": "3d22d20c45bd321a748c441dee6d20ac",
+    #         "sport_key": "tennis_wta_aus_open_singles",
+    #         "sport_title": "WTA Australian Open",
+    #         "commence_time": "2026-01-29T00:00:21Z",
+    #         "home_team": "Aryna Sabalenka",
+    #         "away_team": "Elina Svitolina",
+    #         "bookmakers": [
+    #             {
+    #                 "key": "draftkings",
+    #                 "title": "DraftKings",
+    #                 "last_update": "2026-01-28T01:32:31Z",
+    #                 "markets": [
+    #                     {
+    #                         "key": "h2h",
+    #                         "last_update": "2026-01-28T01:32:31Z",
+    #                         "outcomes": [
+    #                             {
+    #                                 "name": "Aryna Sabalenka",
+    #                                 "price": 1.25
+    #                             },
+    #                             {
+    #                                 "name": "Elina Svitolina",
+    #                                 "price": 3.87
+    #                             }
+    #                         ]
+    #                     }
+    #                 ]
+    #             }
+    #         ]
+    #     }
+    # ]
 
     active_api_match_ids = []
 
@@ -140,7 +138,7 @@ def main():
         start_time_utc = match.get('commence_time')
 
         # skip if match hasn't started
-        if parse(start_time_utc) > now:
+        if parse(start_time_utc) > datetime.now(tzutc()):
             continue
 
         active_api_match_ids.append(api_match_id)
