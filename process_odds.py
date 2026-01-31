@@ -6,15 +6,12 @@ import smtplib
 import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
-from email import encoders
 from datetime import datetime
 from dateutil.parser import parse
 from dateutil.tz import tzutc
 from dotenv import load_dotenv
 import matplotlib.pyplot as plt
-import numpy as np
 
 load_dotenv()
 
@@ -24,7 +21,7 @@ def main():
     conn.execute("PRAGMA foreign_keys = ON")  # enable foreign key constraints
     cur = conn.cursor()
 
-    tournament = 'tennis_wta_aus_open_singles'
+    tournament = 'tennis_atp_aus_open_singles'
     api_base_url = f'https://api.the-odds-api.com/v4/sports/{tournament}/odds/'
     general_params = {
         'apiKey': os.getenv('ODDS_API_KEY'),

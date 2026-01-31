@@ -1,5 +1,8 @@
 .env
 *.db
-*plist
+*.plist
+*.log
 venv/
 plots/
+
+.DS_Store
