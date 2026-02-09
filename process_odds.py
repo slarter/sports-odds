@@ -11,6 +11,8 @@ from datetime import datetime
 from dateutil.parser import parse
 from dateutil.tz import tzutc
 from dotenv import load_dotenv
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 load_dotenv()
@@ -21,7 +23,7 @@ def main():
     conn.execute("PRAGMA foreign_keys = ON")  # enable foreign key constraints
     cur = conn.cursor()
 
-    tournament = 'tennis_atp_aus_open_singles'
+    tournament = 'tennis_wta_qatar_open'
     api_base_url = f'https://api.the-odds-api.com/v4/sports/{tournament}/odds/'
     general_params = {
         'apiKey': os.getenv('ODDS_API_KEY'),
@@ -146,17 +148,18 @@ def main():
         """
         cur.execute(create_match_entry_query)
 
-        h2h_market = deep_get(match, ['bookmakers', 0, 'markets', 0], {})
-        last_update_time = h2h_market.get('last_update')
-        moneylines_by_player = {outcome.get('name'): outcome.get('price') for outcome in h2h_market.get('outcomes', [])}
-        player_1_moneyline = moneylines_by_player.get(player_1)
-        player_2_moneyline = moneylines_by_player.get(player_2)
+        h2h_market = deep_get(match, ['bookmakers', 0, 'markets', 0])
+        if h2h_market:
+            last_update_time = h2h_market.get('last_update')
+            moneylines_by_player = {outcome.get('name'): outcome.get('price') for outcome in h2h_market.get('outcomes', [])}
+            player_1_moneyline = moneylines_by_player.get(player_1)
+            player_2_moneyline = moneylines_by_player.get(player_2)
 
-        create_odds_entry_query = f"""
-            INSERT INTO Odds (api_match_id, player_1, player_1_moneyline, player_2, player_2_moneyline, last_update_time)
-            VALUES ("{api_match_id}", "{player_1}", {player_1_moneyline}, "{player_2}", {player_2_moneyline}, "{last_update_time}");
-        """
-        cur.execute(create_odds_entry_query)
+            create_odds_entry_query = f"""
+                INSERT INTO Odds (api_match_id, player_1, player_1_moneyline, player_2, player_2_moneyline, last_update_time)
+                VALUES ("{api_match_id}", "{player_1}", {player_1_moneyline}, "{player_2}", {player_2_moneyline}, "{last_update_time}");
+            """
+            cur.execute(create_odds_entry_query)
 
     # get finished matches (in db but not returned by api)
     get_finished_matches_query = f"""
@@ -182,7 +185,7 @@ def main():
                 player_2: [player_2_moneyline],
                 'last_update_times': [last_update_time],
             }
-    
+
     # save images
     image_paths = []
     for match in finished_match_odds_by_api_match_id.values():
@@ -201,7 +204,7 @@ def main():
             plt.legend()
             plt.savefig(image_path)
             image_paths.append(image_path)
-    
+
     if len(image_paths) > 0:
         send_email(subject="Tennis Odds", body="", attachment_paths=image_paths)
 
@@ -227,7 +230,7 @@ def send_email(subject, body, attachment_paths=[]):
             </body>
         </html>
     """
-    
+
     message = MIMEMultipart()
     message['From'] = sender_receiver_email
     message['To'] = sender_receiver_email
@@ -249,12 +252,16 @@ def send_email(subject, body, attachment_paths=[]):
 
 def get_api_response(api_base_url, params_dict):
     headers = {'Content-Type': 'application/json'}
-    params_str = '&'.join(
-        [f'{param[0]}={param[1]}' for param in params_dict.items()])
+    params_str = '&'.join([f'{param[0]}={param[1]}' for param in params_dict.items()])
 
     r = requests.get(f'{api_base_url}?{params_str}', headers=headers)
     if r.status_code != 200:
         raise Exception(f'request failed: {r.text.strip()}')
+
+    credits_used = r.headers.get('x-requests-used', 0)
+    credits_remaining = r.headers.get('x-requests-remaining', 0)
+    print(f'Credits used: {credits_used}')
+    print(f'Credits remaining: {credits_remaining}')
 
     response_text = r.text.strip()
     json_data = json.loads(response_text)
